@@ -29,10 +29,6 @@ function setAllServos (thisAngle: number) {
     kitronik_i2c_16_servo.servoWrite(kitronik_i2c_16_servo.Servos.Servo16, thisAngle)
 }
 let adjust = 0
-let thisAngle = 0
-// -16 is the correct value for first Tower Pro SG92R servo in position 1
-// -13 is correct for a 9g SG90
-adjust = -20
 kitronik_i2c_16_servo.adjustServos(adjust)
 basic.showLeds(`
     . . # . .
@@ -41,6 +37,11 @@ basic.showLeds(`
     . . . . .
     # # # # #
     `)
+basic.pause(2000)
+let thisAngle = 0
+// -16 is the correct value for first Tower Pro SG92R servo in position 1
+// -13 is correct for a 9g SG90
+adjust = -20
 basic.forever(function () {
     basic.showNumber(adjust)
     basic.pause(100)
